@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <% flash.each do |key, value| %>
+    <div id="error_explanation">
+      <div class="alert alert-#{key}">
+        <%= value unless value.blank? %>
+      </div>
+    </div>
+  <% end %>
+  <h3>Title:</h3>
+  <%= @form.title%>
+  <h3>Description</h3>
+  <%= @form.description%>
+  <br>
+  <div>
+    <%= link_to 'Delete this form', form_url(@form.id), method: :delete, data: {confirm: 'Are you sure?'}%>
+    <br>
+    <%= link_to 'Return to list',forms_url%>
+  </div>
+</body>
+</html>

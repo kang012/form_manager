@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   root 'static#index'
   get 'sign_up', to: 'users#new'
   resources :users
+  resources :forms do 
+   resources :questions
+  end
 end

@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title>Create new question</title>
+ </head>
+ <body>
+  <h3>New Question</h3>
+  <%= form_for @question,url: form_questions_path(@form, @question) do |f| %>
+   <%= f.label :question_text %>
+   <%= f.text_field :question_text %>
+   <br>
+   <%= f.label :question_type %>
+   <%= f.select(:question_type) do  %>
+    <% ['Multiple choice', 'Short answer'].each do |c| %>
+      <%= content_tag(:option, c) %>
+    <% end %>
+   <% end %>
+   <br>
+   <%= f.submit %>
+  <% end %> 
+  
+ </body>
+</html>

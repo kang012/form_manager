@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <% flash.each do |key, value| %>
+    <div id="error_explanation">
+      <div class="alert alert-#{key}">
+        <%= value unless value.blank? %>
+      </div>
+    </div>
+  <% end %>
+  <h3>Question Text:</h3>
+  <%= @question.question_text%>
+  <h3>Type</h3>
+  <%= @question.question_type%>
+  <h3> Answers </h3>
+  <ul>
+    <% unless @question.answers.nil?%>
+      <% @question.answers.each do |answer|%>
+        <li> answer </li>
+      <% end %>
+    <% end %>
+  <br>
+  <div>
+    <%= link_to 'Delete this question', form_question_url(@question.id), method: :delete, data: {confirm: 'Are you sure?'}%>
+    <br>
+    <%= link_to 'Return to list',form_questions_url%>
+  </div>
+</body>
+</html>

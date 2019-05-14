@@ -1,0 +1,15 @@
+<DOCTYPE HTML!>
+<html>
+  <head>
+    <title><%= @form.title %></title>
+  </head>
+  <body>
+    <h3><%= @form.title %></h3>
+    <h4> Questions list <%= link_to 'New Question', new_form_question_path(@form)%></h4>
+    <ol>
+      <% @questions.each do |q| %>
+        <li><b><%= q.question_text %></b></li>
+      <% end %>
+    </ol>
+  </body>
+</html>

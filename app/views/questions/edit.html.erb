@@ -1,0 +1,16 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <title>Create new question</title>
+ </head>
+ <body>
+  <h3>Edit Question</h3>
+  <%= form_for(@question, url: form_question_path) do |f| %>
+   <%= f.label :question_text %>
+   <%= f.text_field :question_text %>
+   <br>
+   <%= f.submit %>
+  <% end %> 
+  
+ </body>
+</html>

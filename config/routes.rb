@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'sign_up', to: 'users#new'
   resources :users
   resources :forms do
-    resources :questions
+    resources :questions do
+      resources :answers
+    end
   end
 end

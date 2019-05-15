@@ -31,8 +31,9 @@
          </span>
          <% unless question.answers.empty?%>
           <ul>
-            <% question.answers.each do |answer| %>
+            <% question.answers.each_with_index do |answer, index| %>
               <li><%= answer %></li>
+              <%= link_to 'Edit', edit_form_question_answer_path(@form, question, index: index)%>
             <% end %>
           </ul>
          <% end %>

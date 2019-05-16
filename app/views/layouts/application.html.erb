@@ -9,6 +9,14 @@
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+      <a class="navbar-brand" href="#">Form manager</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%=link_to 'Create new form', new_form_url, class: 'nav-link'%>
+        </li>
+      </ul>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -5,7 +5,7 @@
  </head>
  <body>
   <h3>New Question</h3>
-  <%= form_for @question,url: form_questions_path(@form, @question) do |f| %>
+  <%= form_for @question,url: user_form_questions_path(current_user, @form, @question) do |f| %>
    <%= f.label :question_text %>
    <%= f.text_field :question_text %>
    <br>

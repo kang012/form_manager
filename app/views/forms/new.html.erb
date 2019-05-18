@@ -15,7 +15,7 @@
     </div>
   <% end %>
   <h1> Create a new form</h1>
-  <%= form_for(@form) do |f| %>
+  <%= form_for @form, url: user_forms_path() do |f| %>
     <%= f.label :title %>
     <%= f.text_field :title %>
     <br>

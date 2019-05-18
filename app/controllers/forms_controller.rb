@@ -1,6 +1,6 @@
 class FormsController < ApplicationController
   def index
-    @forms = Form.all
+    @forms = current_user.forms
   end
 
   def new
@@ -8,10 +8,10 @@ class FormsController < ApplicationController
   end
 
   def create
-    form = Form.new(form_params)
+    form = current_user.forms.new(form_params)
     if form.save
       flash[:notice] = 'A new form has been successfully created'
-      redirect_to(form)
+      redirect_to user_forms_path
     else
       flash[:notice] = 'Can\'t not creating new form'
     end

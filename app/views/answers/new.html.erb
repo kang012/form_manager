@@ -15,7 +15,7 @@
     </div>
   <% end %>
   <h1> Add new answer</h1>
-  <%= form_tag(form_question_answers_path, method: 'post') do %>
+  <%= form_tag(user_form_question_answers_path, method: 'post') do %>
     <%= label_tag(:answer, 'Answer')%>
     <%= text_field_tag(:answer)%>
     <%= submit_tag("Create answer") %>

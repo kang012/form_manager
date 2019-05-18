@@ -1,4 +1,6 @@
 class AnswersController < ApplicationController
+  before_action :init_question
+
   def new
   end
 
@@ -8,7 +10,7 @@ class AnswersController < ApplicationController
     question.answers.push(answer)
     question.save
     flash[:notice] = 'New answer has been added'
-    redirect_to form_path(params[:form_id])
+    redirect_to user_form_path(current_user, @form, @question)
   end
 
   def edit
@@ -20,7 +22,7 @@ class AnswersController < ApplicationController
     question.answers[params[:answer_index].to_i] = params[:answer]
     question.save
     flash[:notice] = 'Answer has been updated'
-    redirect_to form_path(params[:form_id])
+    redirect_to user_form_path(current_user, @form, @question)
   end
 
   def destroy
@@ -28,6 +30,13 @@ class AnswersController < ApplicationController
     question.answers.delete_at params[:index].to_i
     question.save
     flash[:notice] = 'Answer has been deleted'
-    redirect_to form_path(params[:form_id])
+    redirect_to user_form_path(current_user, @form, @question)
+  end
+
+  private
+
+  def init_question
+    @form = current_user.forms.find(params[:form_id])
+    @question = @form.questions.find(params[:question_id])
   end
 end

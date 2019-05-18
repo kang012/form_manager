@@ -12,10 +12,10 @@
           <li class="list-group-item">
             <p><%= question.question_text %></p>
             <span>
-            <%= link_to 'Edit', edit_form_question_path(@form,question) %>
-            <%= link_to 'Delete', form_question_path(@form, question), method: :delete, data: {confirm: 'Are you sure ?'} %>
+            <%= link_to 'Edit', edit_user_form_question_path(current_user, @form,question) %>
+            <%= link_to 'Delete', user_form_question_path(current_user, @form, question), method: :delete, data: {confirm: 'Are you sure ?'} %>
             <% if question.question_type == 'Multiple choice'%>
-              <%= link_to 'New Answer', new_form_question_answer_path(@form, question)%>
+              <%= link_to 'New Answer', new_user_form_question_answer_path(current_user, @form, question)%>
             <% end%>
             </span>
             <% unless question.answers.empty?%>
@@ -24,8 +24,8 @@
                 <li class="list-group-item text-dark">
                   <input type="radio" class="form-check-input" name="optradio">
                   <%= answer %>
-                  <%= link_to 'Edit', edit_form_question_answer_path(@form, question, index: index)%>
-                  <%= link_to 'Delete', form_question_answer_path(@form, question, index: index), method: :delete%>
+                  <%= link_to 'Edit', edit_user_form_question_answer_path(current_user, @form, question, index: index)%>
+                  <%= link_to 'Delete', user_form_question_answer_path(current_user, @form, question, index: index), method: :delete%>
                 </li>
               <% end %>
             </ul>
@@ -35,11 +35,11 @@
       </ol>
     <% end%>
     <div class="btn-group">
-      <%= link_to 'Add new question to this form', new_form_question_url(@form.id), class: 'btn btn-success' %>
+      <%= link_to 'Add new question to this form', new_user_form_question_url(current_user, @form.id), class: 'btn btn-success' %>
       <br>
-      <%= link_to 'Delete this form', form_url(@form.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
+      <%= link_to 'Delete this form', user_form_url(current_user, @form.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
       <br>
-      <%= link_to 'Return to list',forms_url, class: 'btn btn-primary'%>
+      <%= link_to 'Return to list',user_forms_url, class: 'btn btn-primary'%>
     </div>
   </div>
   <div class='col-md-3 bg-light'>

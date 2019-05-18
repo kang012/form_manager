@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
           <p class="card-text" ><%= form.description %></p>
-          <a href="<%= form_path(form.id)%>" class="btn btn-primary">View form</a>
+          <%= link_to 'View Form', user_form_path(current_user, form.id), class: 'btn btn-primary'%>
         </div>
       </div>
     </div>

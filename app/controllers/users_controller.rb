@@ -5,6 +5,8 @@ class UsersController < ApplicationController
 
   def create
     User.create(user_params)
+    flash[:notice] = 'Account create successful'
+    redirect_to login_path
   end
 
   def update

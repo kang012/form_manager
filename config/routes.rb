@@ -11,5 +11,6 @@ Rails.application.routes.draw do
         resources :answers
       end
     end
+    resources :answered_forms
   end
 end

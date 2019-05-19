@@ -1,0 +1,16 @@
+<%= form_for @answered_form, url: user_answered_forms_path do |f| %>
+  <%= f.hidden_field :form_id, value: '1' %>
+
+  <%= f.fields_for :answered_questions do |ans| %>
+    <%= ans.hidden_field :question_id, value: @form.questions[ans.index].id %>
+    <% @form.questions.each do |question| %>
+      <% question.answers.each_with_index do |answer, index| %>
+        <%= label :user_answer, answer   %>
+        <%= ans.radio_button :user_answer, value: index %>
+        <br>
+      <% end %>
+    <% end %>
+  <% end %>
+  
+  <%= f.submit %>
+<% end %>

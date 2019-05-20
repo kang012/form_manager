@@ -8,7 +8,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(session[:password])
       login user
       flash[:notice] = "Hello #{user.email} !!!"
-      redirect_to user_forms_path current_user
+      if session[:return_to]
+        redirect_to session[:return_to]
+      else
+        redirect_to user_forms_path current_user
+      end
     else
       flash[:notice] = 'Invalid email or password'
       render 'new'

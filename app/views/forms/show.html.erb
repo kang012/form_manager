@@ -34,12 +34,18 @@
         <% end %>
       </ol>
     <% end%>
-    <div class="btn-group">
-      <%= link_to 'Add new question to this form', new_user_form_question_url(current_user, @form.id), class: 'btn btn-success' %>
+    <br>
+    <div class="btn-group w-100">
+      <%= link_to 'Add new question', new_user_form_question_url(current_user, @form.id), class: 'btn btn-success' %>
       <br>
       <%= link_to 'Delete this form', user_form_url(current_user, @form.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
       <br>
       <%= link_to 'Return to list',user_forms_url, class: 'btn btn-primary'%>
+      <br>
+      <%= link_to 'View Stat', user_form_result_path(form_id: @form.id), class:'pull-left btn btn-info'%>
+    </div>
+    <div class="alert alert-info">
+      <strong>Share this form by copy this </strong> <%= link_to 'Link', new_user_answered_form_url(form_id: @form.id), class: 'alert-link' %>
     </div>
   </div>
   <div class='col-md-3 bg-light'>

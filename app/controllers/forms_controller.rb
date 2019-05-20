@@ -21,6 +21,10 @@ class FormsController < ApplicationController
     @form = Form.find(params[:id])
   end
 
+  def result
+    @form = Form.find(params[:form_id])
+  end
+
   def update
   end
 

@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-3 bg-light">
+  </div>
+  <div class="col-md-6">
+    <h3 class="text-center"><%= @form.title%></h3>
+    <hr>
+    <p class="text-left"><%= @form.description%></p>
+    <hr>
+    <ol class="list-group">
+    <% @form.questions.each do |question| %>
+      <li class="list-group-item bg-light">
+      <p><%= question.question_text %></p>
+        <% if question.question_type == 'Multiple choice'%>
+          <% question.answers.each_with_index do |answer, index| %>
+              <p><%= "#{answer}: " %></p>
+            <div class="progress">
+              <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:<%= question.answers_stat[answer].round %>%">
+                <%= question.answers_stat[answer].round %> %
+              </div>
+            </div>
+            <br>
+          <% end %>
+        <% else %>
+          <ul class="list-group">
+            <% question.answered_questions.each do |answer| %>
+              <li class="list-group-item"><%= answer.user_answer %></li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+      </li>
+    </ol>
+    <br>
+    <div class="alert alert-info">
+      <strong>Share this form by copy this </strong> <%= link_to 'Link', new_user_answered_form_url(form_id: @form.id), class: 'alert-link' %>
+    </div>
+  </div>
+  <div class='col-md-3 bg-light'>
+  </div>
+</div>

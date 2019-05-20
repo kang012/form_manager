@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   resources :users do
     resources :forms do
+      get 'result', to: 'forms#result'
       resources :questions do
         resources :answers
       end

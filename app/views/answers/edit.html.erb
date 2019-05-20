@@ -15,7 +15,7 @@
     </div>
   <% end %>
   <h1> Update answer</h1>
-  <%= form_tag(form_question_answer_path(answer_index: @index), method: 'put') do %>
+  <%= form_tag(user_form_question_answer_path(answer_index: @index), method: 'put') do %>
     <%= label_tag(:answer, 'Answer')%>
     <%= text_field_tag(:answer)%>
     <%= submit_tag("Update answer") %>

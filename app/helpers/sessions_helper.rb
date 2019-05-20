@@ -13,6 +13,10 @@ module SessionsHelper
     !current_user.nil?
   end
 
+  def store_location
+    session[:return_to] = request.path
+  end
+
   def log_out
     session.delete(:user_id)
     @current_user = nil

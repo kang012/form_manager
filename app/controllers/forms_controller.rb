@@ -25,18 +25,22 @@ class FormsController < ApplicationController
     @form = Form.find(params[:form_id])
   end
 
+  def edit
+    @form = Form.find(params[:id])
+  end
+
   def update
+    form = Form.find(params[:id])
+    form.update(form_params)
+    flash[:notice] = "#{form.title} has been updated"
+    redirect_to user_form_path(current_user, params[:id])
   end
 
   def destroy
     form = Form.find(params[:id])
-    if form.delete
-      flash[:notice] = "#{form.title} has been deleted"
-      redirect_to forms_url
-    else
-      flash[:notice] = "#{form.title} can't be deleted"
-      redirect_to(form)
-    end
+    form.delete
+    flash[:notice] = "#{form.title} has been deleted"
+    redirect_to user_form_path(current_user, params[:id])
   end
 
   private

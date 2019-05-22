@@ -1,22 +1,18 @@
-<% flash.each do |key, value| %>
-  <div id="error_explanation">
-    <div class="alert alert-#{key}">
-      <%= value unless value.blank? %>
-    </div>
-  </div>
-<% end %>
-<div class="row">
-  <% @forms.each do |form|%>
-    <div class="col-md-2">
-      <div class="card">
-        <div class="card-header">
-          <h4 class="card-title"><%= form.title%></h4>
-        </div>
-        <div class="card-body">
-          <p class="card-text" ><%= form.description %></p>
-          <%= link_to 'View Form', user_form_path(current_user, form.id), class: 'btn btn-primary'%>
+<div class="container-fluid">
+  <div class="row">
+    <% @forms.each do |form|%>
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"><%= form.title%></h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text" ><%= form.description %></p>
+            <%= link_to 'View Form', user_form_path(current_user, form.id), class: 'btn btn-primary'%>
+            <%= link_to 'Edit', edit_user_form_path(current_user, form.id), class: 'btn btn-primary'%>
+          </div>
         </div>
       </div>
-    </div>
-  <%end%>
+    <%end%>
+  </div>
 </div>

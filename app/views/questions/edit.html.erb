@@ -1,16 +1,18 @@
-<!DOCTYPE HTML>
-<html>
- <head>
-  <title>Create new question</title>
- </head>
- <body>
-  <h3>Edit Question</h3>
-  <%= form_for(@question, url: user_form_question_path) do |f| %>
-   <%= f.label :question_text %>
-   <%= f.text_field :question_text %>
-   <br>
-   <%= f.submit %>
-  <% end %> 
-  
- </body>
-</html>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <br>       
+      <h3>Edit Question</h3>
+      <%= form_for(@question, url: user_form_question_path) do |f| %>
+        <div class="form-group">
+          <%= f.label :question_text %>
+          <%= f.text_field :question_text, class: 'form-control' %>
+        </div>
+        <%= f.submit 'Update', class: 'btn btn-success w-100'%>
+      <% end %> 
+    </div>
+  </div>
+</div>
+

@@ -1,19 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <h1> This is signup page</h1>
-  <%= form_for(@user) do |f| %>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-    <%= f.label :password %>
-    <%= f.password_field :password%>
-    <%= f.submit 'Create' %>
-  <% end %>
-</body>
-</html>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+    </div>
+    <div class="col-md-8">
+      <br>
+      <h1> Sign up </h1>
+      <%= form_for(@user) do |f| %>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.text_field :email, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control'%>
+        </div>
+        <%= f.submit 'Create' , class: 'btn btn-success w-100'%>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+    </div>        
+  </div>
+</div>

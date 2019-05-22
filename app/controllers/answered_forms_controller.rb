@@ -14,6 +14,8 @@ class AnsweredFormsController < ApplicationController
   def create
     answered_form = current_user.answered_forms.new(answered_form_params)
     answered_form.save
+    flash[:notice] = 'You answers has been submitted'
+    redirect_to user_forms_path current_user
   end
 
   private

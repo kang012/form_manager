@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <% flash.each do |key, value| %>
-    <div id="error_explanation">
-      <div class="alert alert-#{key}">
-        <%= value unless value.blank? %>
-      </div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <br>  
+      <h1> Create a new form</h1>
+      <%= form_for @form, url: user_forms_path() do |f| %>
+        <div class="form-group">
+          <%= f.label :title, 'Title: ' %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">  
+          <%= f.label :description, 'Description: ' %>
+          <%= f.text_field :description, class: 'form-control'%>
+        </div>
+        <div class="btn-group w-100">
+        <%= f.submit 'Create', class: 'btn btn-success' %>
+        <%= link_to 'Cancel',user_forms_url, class: 'btn btn-danger'%>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-  <h1> Create a new form</h1>
-  <%= form_for @form, url: user_forms_path() do |f| %>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    <br>
-    <%= f.label :description %>
-    <%= f.text_field :description%>
-    <br>
-    <%= f.submit 'Create' %>
-  <% end %>
-</body>
-</html>
+  </div>
+</div>

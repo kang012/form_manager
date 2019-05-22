@@ -12,7 +12,8 @@
       <p><%= question.question_text %></p>
         <% if question.question_type == 'Multiple choice'%>
           <% question.answers.each_with_index do |answer, index| %>
-              <p><%= "#{answer}: " %></p>
+            <hr>
+            <p><%= "#{answer}: " %></p>
             <div class="progress">
               <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:<%= question.answers_stat[answer].round %>%">
                 <%= question.answers_stat[answer].round %> %

@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <br>  
+      <h1> Edit form</h1>
+      <%= form_for @form, url:  user_form_path() do |f| %>
+        <div class="form-group">
+          <%= f.label :title, 'Title: ' %>
+          <%= f.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="form-group">  
+          <%= f.label :description, 'Description: ' %>
+          <%= f.text_field :description, class: 'form-control'%>
+        </div>
+        <div class="btn-group w-100">
+        <%= f.submit 'Update', class: 'btn btn-success' %>
+        <%= link_to 'Cancel',user_forms_url, class: 'btn btn-danger'%>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,23 +1,24 @@
-<!DOCTYPE HTML>
-<html>
- <head>
-  <title>Create new question</title>
- </head>
- <body>
-  <h3>New Question</h3>
-  <%= form_for @question,url: user_form_questions_path(current_user, @form, @question) do |f| %>
-   <%= f.label :question_text %>
-   <%= f.text_field :question_text %>
-   <br>
-   <%= f.label :question_type %>
-   <%= f.select(:question_type) do  %>
-    <% ['Multiple choice', 'Short answer'].each do |c| %>
-      <%= content_tag(:option, c) %>
-    <% end %>
-   <% end %>
-   <br>
-   <%= f.submit %>
-  <% end %> 
-  
- </body>
-</html>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <br>       
+      <h3>New Question</h3>
+      <%= form_for @question,url: user_form_questions_path(current_user, @form, @question) do |f| %>
+        <div class="form-group">
+          <%= f.label :question_text %>
+          <%= f.text_field :question_text, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :question_type %>
+          <%= f.select :question_type, class: 'form-control' do  %>
+            <% ['Multiple choice', 'Short answer'].each do |c| %>
+              <%= content_tag(:option, c) %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= f.submit 'Create', class: 'btn btn-success w-100' %>
+      <% end %>
+    </div>
+  </div>
+</div>

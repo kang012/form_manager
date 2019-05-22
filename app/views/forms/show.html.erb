@@ -1,53 +1,56 @@
-<div class="row">
-  <div class="col-md-3 bg-light">
-  </div>
-  <div class="col-md-6">
-    <h3 class="text-center"><%= @form.title%></h3>
-    <hr>
-    <p class="text-left"><%= @form.description%></p>
-    <hr>
-    <% unless @form.questions.empty?%>
-      <ol class="list-group">
-        <% @form.questions.each do |question| %>
-          <li class="list-group-item">
-            <p><%= question.question_text %></p>
-            <span>
-            <%= link_to 'Edit', edit_user_form_question_path(current_user, @form,question) %>
-            <%= link_to 'Delete', user_form_question_path(current_user, @form, question), method: :delete, data: {confirm: 'Are you sure ?'} %>
-            <% if question.question_type == 'Multiple choice'%>
-              <%= link_to 'New Answer', new_user_form_question_answer_path(current_user, @form, question)%>
-            <% end%>
-            </span>
-            <% unless question.answers.empty?%>
-            <ul class="list-group list-group-flush">
-              <% question.answers.each_with_index do |answer, index| %>
-                <li class="list-group-item text-dark">
-                  <input type="radio" class="form-check-input" name="optradio">
-                  <%= answer %>
-                  <%= link_to 'Edit', edit_user_form_question_answer_path(current_user, @form, question, index: index)%>
-                  <%= link_to 'Delete', user_form_question_answer_path(current_user, @form, question, index: index), method: :delete%>
-                </li>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 bg-light">
+      <br>
+      <h3 class="text-center"><%= @form.title%></h3>
+      <hr>
+      <p class="text-left"><%= @form.description%></p>
+      <hr>
+      <% unless @form.questions.empty?%>
+        <ol class="list-group">
+          <% @form.questions.each do |question| %>
+            <li class="list-group-item">
+              <p><%= question.question_text %></p>
+              <span>
+              <%= link_to 'Edit', edit_user_form_question_path(current_user, @form,question) %>
+              <%= link_to 'Delete', user_form_question_path(current_user, @form, question), method: :delete, data: {confirm: 'Are you sure ?'} %>
+              <% if question.question_type == 'Multiple choice'%>
+                <%= link_to 'New Answer', new_user_form_question_answer_path(current_user, @form, question)%>
+              <% end%>
+              </span>
+              <% unless question.answers.empty?%>
+              <ul class="list-group list-group-flush">
+                <% question.answers.each_with_index do |answer, index| %>
+                  <li class="list-group-item text-dark">
+                    <input type="radio" class="form-check-input" name="optradio">
+                    <%= answer %>
+                    <%= link_to 'Edit', edit_user_form_question_answer_path(current_user, @form, question, index: index)%>
+                    <%= link_to 'Delete', user_form_question_answer_path(current_user, @form, question, index: index), method: :delete%>
+                  </li>
+                <% end %>
+              </ul>
               <% end %>
-            </ul>
-            <% end %>
-          </li>
-        <% end %>
-      </ol>
-    <% end%>
-    <br>
-    <div class="btn-group w-100">
-      <%= link_to 'Add new question', new_user_form_question_url(current_user, @form.id), class: 'btn btn-success' %>
+            </li>
+          <% end %>
+        </ol>
+      <% end%>
       <br>
-      <%= link_to 'Delete this form', user_form_url(current_user, @form.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
-      <br>
-      <%= link_to 'Return to list',user_forms_url, class: 'btn btn-primary'%>
-      <br>
-      <%= link_to 'View Stat', user_form_result_path(form_id: @form.id), class:'pull-left btn btn-info'%>
+      <div class="btn-group w-100">
+        <%= link_to 'Add new question', new_user_form_question_url(current_user, @form.id), class: 'btn btn-success' %>
+        <br>
+        <%= link_to 'Delete this form', user_form_url(current_user, @form.id), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-danger'%>
+        <br>
+        <%= link_to 'Return to list',user_forms_url, class: 'btn btn-primary'%>
+        <br>
+        <%= link_to 'View Stat', user_form_result_path(form_id: @form.id), class:'pull-left btn btn-info'%>
+      </div>
+      <div class="alert alert-info">
+        <strong>You can share this form via this </strong> <%= link_to 'Link', new_user_answered_form_url(form_id: @form.id), class: 'alert-link' %>
+      </div>
     </div>
-    <div class="alert alert-info">
-      <strong>Share this form by copy this </strong> <%= link_to 'Link', new_user_answered_form_url(form_id: @form.id), class: 'alert-link' %>
+    <div class='col-md-3'>
     </div>
-  </div>
-  <div class='col-md-3 bg-light'>
   </div>
 </div>
